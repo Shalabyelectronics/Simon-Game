@@ -1,0 +1,66 @@
+* {
+    /*border:2px solid red;/*dubbuging*/
+}
+/*
+Fonts 
+font-family: 'Blaka Hollow', cursive;
+font-family: 'Lemonada', cursive;
+*/
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 20px; /*dubbuging*/
+    background-color: black;
+    color: azure;
+}
+
+.main-container {
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    align-self: center;
+}
+
+p {
+    font-family: 'Lemonada', cursive;
+    font-size: 15px;
+}
+.game-status {
+    font-family: 'Blaka Hollow', cursive;
+}
+
+.box-container{
+    display: flex;
+    justify-content: center;
+}
+row-1, row-2 {
+    display: flex;
+    justify-content: space-between;
+}
+.box{
+    margin: 15px;
+    height: 100px;
+    width: 100px;
+    border-radius: 22.5px;
+    border: 4px solid whitesmoke;
+}
+.red{
+    background-color: #FF1E1E;
+}
+.green {
+    background-color: #00FFD1;
+}
+.yellow {
+    background-color: #FFFF00;
+}
+.blue {
+    background-color: #31C6D4;
+}
+

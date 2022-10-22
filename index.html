@@ -8,13 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Blaka+Hollow&family=Lemonada&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>لعبة الذاكرة الصوتية</title>
+    <title>لعبة الذاكرة الضوئية</title>
 </head>
 <body>
     <header>
-        <p>أضغط على اي مربع لتبدء اللعبة</p>
+        <p class="default-status">أضغط على اي مربع لتبدء اللعبة</p>
     </header>
     <div class="main-container">
+        <div class="levels-board-container">
+            <p class="level-update">المرحلة 1</p>
+        </div>
         <div class="box-container">
             <div class="row-1">
                 <div class="green box"></div>
@@ -29,5 +32,7 @@
     <footer>
         <a href="http://shalaby.tech" target="_blank">www.shalaby.tech</a>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="./game.js"></script>
 </body>
 </html>

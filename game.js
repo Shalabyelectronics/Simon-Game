@@ -32,7 +32,7 @@ function gameStart(box){
     setTimeout(runLevel,1000)
     setTimeout(function(){
         $('.default-status').text("كرر النمط");
-    },1000*clickedBoxs.length)
+    },3000)
 }
 var i = 0;
 function runLevel(){

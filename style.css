@@ -19,7 +19,7 @@ body{
 
 .main-container {
     display: flex;
-    height: 400px;
+    height: 450px;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
@@ -30,15 +30,18 @@ header{
 
 .default-status {
     font-family: 'Lemonada', cursive;
-    font-size: 15px;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
-
+.levels-board-container{
+    height: 50px;
+}
 .level-update {
     display: none;
     font-family: 'Blaka Hollow', cursive;
     font-size: 2rem;
+    margin: 0;
 }
 
 .box-container{

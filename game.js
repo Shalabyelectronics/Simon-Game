@@ -1,13 +1,16 @@
 let clickedBoxes = []
-$(".btn").click(function(){
+$(".btn").click('event',clickStartOrTry);
+
+function clickStartOrTry(){
+    clickedBoxes = []
+    $('body').css({
+        'background-color':'black',
+        'color':'white',
+    });
     $(this).fadeOut();
     $('.default-status').text("بدأت اللعبة");
     $(this).off('click');
     startGame()
-});
-
-function test(box){
-    x = box;
 }
 
 function boxBlinking(box){
@@ -29,9 +32,7 @@ function runLevel(){
         }
     },1000)
     if (i === (clickedBoxes.length-1)){
-       
-        console.log("fired")
-        console.log(i,clickedBoxes.length-1)
+
         $('.box').click(checkPattern);
     } 
 }
@@ -80,6 +81,8 @@ function checkPattern(box){
             $('.default-status').text("لقد خسرت");
             $('.btn').text("حاول مرة أخرى");
             $('.btn').fadeIn();
-            $('.check-box').off('click');
+            $('.box').off('click');
+            $(".btn").click('event',clickStartOrTry);
+
         }
 }}

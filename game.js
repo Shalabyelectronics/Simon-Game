@@ -1,5 +1,10 @@
-let clickedBoxs = []
-$(".box").click('event',gameStart);
+let clickedBoxes = []
+$(".btn").click(function(){
+    $(this).fadeOut();
+    $('.default-status').text("بدأت اللعبة");
+    $(this).off('click');
+    startGame()
+});
 
 function test(box){
     x = box;
@@ -14,35 +19,67 @@ function boxBlinking(box){
     },'slow');
 }
 
-function pickRandomBox(boxes){
-    randomNumber = Math.floor(Math.random() *4);
-    return boxes[randomNumber];}
-
-function gameStart(box){
-    let boxElement = box.currentTarget
-    clickedBoxs.push(boxElement)
-    clickedBoxs.push(pickRandomBox($(".box")))
-    boxBlinking(boxElement)
-    $('.default-status').text("بدأت اللعبة");
-    $('.level-update').fadeIn();
-    $(".box").off('click');
-    setTimeout(function(){
-        $('.default-status').text("ركز على النمط");
-    },1000)
-    setTimeout(runLevel,1000)
-    setTimeout(function(){
-        $('.default-status').text("كرر النمط");
-    },3000)
-}
 var i = 0;
 function runLevel(){
     setTimeout(function(){
-        boxBlinking(clickedBoxs[i]);
+        boxBlinking(clickedBoxes[i]);
         i++;
-        if (i < clickedBoxs.length){
+        if (i < clickedBoxes.length){
             runLevel()
-        }else{
-            i = 0;
         }
-    },2000)
+    },1000)
+    if (i === (clickedBoxes.length-1)){
+       
+        console.log("fired")
+        console.log(i,clickedBoxes.length-1)
+        $('.box').click(checkPattern);
+    } 
 }
+
+function levelUp(boxes){
+    randomNumber = Math.floor(Math.random() *4);
+    return boxes[randomNumber];}
+
+function startGame(){
+    boxIndex = 0;
+    $('.box').off('click',checkPattern);
+    clickedBoxes.push(levelUp($(".box")))
+    setTimeout(function(){
+        $('.default-status').text("ركز على النمط");
+        setTimeout(function(){
+            $('.default-status').text("كرر النمط");
+            setTimeout(function(){
+                $('.level-update').text(clickedBoxes.length);
+                $('.level').fadeIn();
+                $('.level-update').fadeIn();
+                runLevel()
+                
+            },1000)
+        },1000)
+    },1000)
+    
+    
+}
+
+
+let boxIndex = 0
+function checkPattern(box){
+    i = 0;
+    if (boxIndex < clickedBoxes.length){
+        if (box.currentTarget === clickedBoxes[boxIndex]){
+            boxBlinking(box.currentTarget);
+            boxIndex++;
+        if ((boxIndex) === clickedBoxes.length){
+            $('.default-status').text("لقد ربحت");
+            startGame();
+        }}else{
+            $('body').css({
+                'background-color':'red',
+                'color':'black',
+            });
+            $('.default-status').text("لقد خسرت");
+            $('.btn').text("حاول مرة أخرى");
+            $('.btn').fadeIn();
+            $('.check-box').off('click');
+        }
+}}

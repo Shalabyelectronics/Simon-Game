@@ -14,12 +14,7 @@ function clickStartOrTry(){
 }
 
 function boxBlinking(box){
-    $(box).animate({
-        opacity:'0.1'
-    },"slow");
-    $(box).animate({
-        opacity:'100'
-    },'slow');
+   $(box).fadeOut(200).fadeIn(200)
 }
 
 var i = 0;
@@ -57,9 +52,7 @@ function startGame(){
                 
             },1000)
         },1000)
-    },1000)
-    
-    
+    },1000)   
 }
 
 

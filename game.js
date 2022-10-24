@@ -3,10 +3,6 @@ $(".btn").click('event',clickStartOrTry);
 
 function clickStartOrTry(){
     clickedBoxes = []
-    $('body').css({
-        'background-color':'black',
-        'color':'white',
-    });
     $(this).fadeOut();
     $('.default-status').text("بدأت اللعبة");
     $(this).off('click');
@@ -67,10 +63,27 @@ function checkPattern(box){
             $('.default-status').text("لقد ربحت");
             startGame();
         }}else{
+            /*
             $('body').css({
                 'background-color':'red',
                 'color':'black',
             });
+            setTimeout(function(){
+                $('body').css({
+                    'background-color':'black',
+                    'color':'white',
+                },700);
+            })*/
+            $('body').css({
+                'background-color':'red',
+                'color':'black'
+            })
+            setTimeout(function(){
+                $('body').css({
+                    'background-color':'black',
+                    'color':'white'
+                })
+            },200)
             $('.default-status').text("لقد خسرت");
             $('.btn').text("حاول مرة أخرى");
             $('.btn').fadeIn();

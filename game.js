@@ -2,6 +2,8 @@ let clickedBoxes = []
 $(".btn").click('event',clickStartOrTry);
 
 function clickStartOrTry(){
+    let click = new Audio('./sounds/click.wav')
+    click.play()
     clickedBoxes = []
     $(this).fadeOut();
     $('.default-status').text("بدأت اللعبة");
@@ -58,22 +60,15 @@ function checkPattern(box){
     if (boxIndex < clickedBoxes.length){
         if (box.currentTarget === clickedBoxes[boxIndex]){
             boxBlinking(box.currentTarget);
+            playBoxSound(box.currentTarget)
             boxIndex++;
         if ((boxIndex) === clickedBoxes.length){
             $('.default-status').text("لقد ربحت");
             startGame();
         }}else{
-            /*
-            $('body').css({
-                'background-color':'red',
-                'color':'black',
-            });
-            setTimeout(function(){
-                $('body').css({
-                    'background-color':'black',
-                    'color':'white',
-                },700);
-            })*/
+            let wrongSound = new Audio('./sounds/wrong.mp3');
+            wrongSound.play();
+
             $('body').css({
                 'background-color':'red',
                 'color':'black'
@@ -92,3 +87,9 @@ function checkPattern(box){
 
         }
 }}
+
+function playBoxSound(box){
+    let boxColor = box.attributes.class.value.split(' ')[0];
+    let boxSound = new Audio(`./sounds/${boxColor}.mp3`);
+    boxSound.play()
+}
